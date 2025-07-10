@@ -1,0 +1,92 @@
+name: Release APK
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version (e.g., v1.0.0)'
+        required: true
+        default: 'v1.0.0'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v2
+      
+    - name: Cache Gradle packages
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.gradle/caches
+          ~/.gradle/wrapper
+        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+        
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+      
+    - name: Build release APK
+      run: ./gradlew assembleRelease --stacktrace
+      
+    - name: Sign APK (optional)
+      run: |
+        # APK signing step - for production releases
+        echo "APK built successfully"
+        
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.event.inputs.version || github.ref_name }}
+        release_name: Auto Click Tool ${{ github.event.inputs.version || github.ref_name }}
+        body: |
+          🎉 **Auto Click Tool - Android APK Release**
+          
+          ## 📱 Tính năng chính:
+          - ✅ Tự động nhấp chuột chính xác
+          - ✅ Overlay điều khiển floating
+          - ✅ Quản lý multiple click points
+          - ✅ Giao diện Material 3 hiện đại
+          - ✅ Background service ổn định
+          
+          ## 📋 Cách cài đặt:
+          1. Tải file APK bên dưới
+          2. Cài đặt trên Android device (cho phép "Unknown sources")
+          3. Cấp quyền Accessibility và Overlay
+          4. Sử dụng ngay!
+          
+          ## 🔧 Yêu cầu:
+          - Android 7.0+ (API 24+)
+          - Quyền Accessibility Service
+          - Quyền System Alert Window
+          
+          ---
+          **Tải APK ⬇️**
+        draft: false
+        prerelease: false
+        
+    - name: Upload APK to Release
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: app/build/outputs/apk/release/app-release-unsigned.apk
+        asset_name: auto-click-tool-${{ github.event.inputs.version || github.ref_name }}.apk
+        asset_content_type: application/vnd.android.package-archive

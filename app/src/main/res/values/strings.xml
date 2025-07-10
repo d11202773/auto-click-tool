@@ -1,0 +1,73 @@
+<resources>
+    <string name="app_name">Auto Click Tool</string>
+    <string name="accessibility_service_description">Dịch vụ hỗ trợ tự động nhấp chuột trên màn hình. Cho phép ứng dụng thực hiện các thao tác chạm tự động theo lịch trình đã thiết lập.</string>
+    
+    <!-- Main Screen -->
+    <string name="main_title">Auto Click Tool</string>
+    <string name="start_service">Bắt đầu dịch vụ</string>
+    <string name="stop_service">Dừng dịch vụ</string>
+    <string name="add_click_point">Thêm điểm nhấp</string>
+    <string name="settings">Cài đặt</string>
+    <string name="about">Thông tin</string>
+    
+    <!-- Click Points -->
+    <string name="click_points_title">Điểm nhấp</string>
+    <string name="no_click_points">Chưa có điểm nhấp nào</string>
+    <string name="add_point">Thêm điểm</string>
+    <string name="edit_point">Chỉnh sửa</string>
+    <string name="delete_point">Xóa</string>
+    <string name="test_point">Thử nghiệm</string>
+    
+    <!-- Add/Edit Point -->
+    <string name="point_name">Tên điểm</string>
+    <string name="point_x">Tọa độ X</string>
+    <string name="point_y">Tọa độ Y</string>
+    <string name="delay_ms">Độ trễ (ms)</string>
+    <string name="repeat_count">Số lần lặp</string>
+    <string name="save">Lưu</string>
+    <string name="cancel">Hủy</string>
+    <string name="pick_coordinate">Chọn tọa độ</string>
+    
+    <!-- Settings -->
+    <string name="settings_title">Cài đặt</string>
+    <string name="enable_accessibility">Bật dịch vụ hỗ trợ</string>
+    <string name="enable_overlay">Bật quyền hiển thị trên ứng dụng khác</string>
+    <string name="default_delay">Độ trễ mặc định (ms)</string>
+    <string name="show_overlay">Hiển thị overlay</string>
+    <string name="vibrate_on_click">Rung khi nhấp</string>
+    <string name="auto_start">Tự động bắt đầu</string>
+    
+    <!-- Permissions -->
+    <string name="permission_overlay_title">Quyền hiển thị</string>
+    <string name="permission_overlay_message">Ứng dụng cần quyền hiển thị trên các ứng dụng khác để hoạt động.</string>
+    <string name="permission_accessibility_title">Dịch vụ hỗ trợ</string>
+    <string name="permission_accessibility_message">Vui lòng bật dịch vụ hỗ trợ trong Cài đặt để ứng dụng có thể thực hiện auto click.</string>
+    <string name="go_to_settings">Đi tới Cài đặt</string>
+    
+    <!-- Status -->
+    <string name="status_running">Đang chạy</string>
+    <string name="status_stopped">Đã dừng</string>
+    <string name="status_ready">Sẵn sàng</string>
+    <string name="status_error">Lỗi</string>
+    
+    <!-- Messages -->
+    <string name="service_started">Dịch vụ đã bắt đầu</string>
+    <string name="service_stopped">Dịch vụ đã dừng</string>
+    <string name="point_added">Đã thêm điểm nhấp</string>
+    <string name="point_updated">Đã cập nhật điểm nhấp</string>
+    <string name="point_deleted">Đã xóa điểm nhấp</string>
+    <string name="error_occurred">Có lỗi xảy ra</string>
+    
+    <!-- Overlay -->
+    <string name="overlay_title">Auto Click</string>
+    <string name="start">Bắt đầu</string>
+    <string name="pause">Tạm dừng</string>
+    <string name="stop">Dừng</string>
+    <string name="minimize">Thu nhỏ</string>
+    
+    <!-- Notifications -->
+    <string name="notification_channel_name">Auto Click Service</string>
+    <string name="notification_channel_description">Thông báo trạng thái dịch vụ auto click</string>
+    <string name="notification_title">Auto Click đang chạy</string>
+    <string name="notification_content">Nhấn để mở ứng dụng</string>
+</resources>
