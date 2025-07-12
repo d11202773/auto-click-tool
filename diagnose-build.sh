@@ -41,16 +41,16 @@ fi
 
 echo ""
 echo "🏗️ Build.gradle dependencies check:"
-if grep -q "kotlin-android" app/build.gradle.kts; then
+if grep -q "org.jetbrains.kotlin.android" app/build.gradle.kts; then
     echo "✅ Kotlin Android plugin found"
 else
     echo "❌ Kotlin Android plugin missing"
 fi
 
-if grep -q "compose-bom" app/build.gradle.kts; then
-    echo "✅ Compose BOM found"
+if grep -q "compose" app/build.gradle.kts; then
+    echo "✅ Compose dependencies found"
 else
-    echo "❌ Compose BOM missing"
+    echo "❌ Compose dependencies missing"
 fi
 
 echo ""

@@ -1,23 +1,54 @@
 #!/bin/bash
 
-echo "🎯 AUTO CLICK TOOL - APK BUILD HƯỚNG DẪN"
-echo "======================================"
+echo "📱 Auto Click Tool - APK Status Checker"
+echo "======================================="
 echo ""
-echo "📋 Để có APK ngay trong 5 phút:"
+
+echo "� GitHub Repository: https://github.com/d11202773/auto-click-tool"
 echo ""
-echo "1️⃣ TẠO GITHUB REPOSITORY:"
-echo "   - Vào https://github.com/new"
-echo "   - Tên repo: auto-click-tool"
-echo "   - Public repository"
-echo "   - Không tick 'Add a README file'"
+
+echo "📋 Current Status:"
+echo "Latest commit: $(git log --oneline -1)"
+echo "Last push: $(git log -1 --format='%cd' --date=relative)"
 echo ""
-echo "2️⃣ UPLOAD CODE:"
-echo "   git remote add origin https://github.com/[USERNAME]/auto-click-tool.git"
-echo "   git branch -M main"
-echo "   git push -u origin main"
+
+echo "🚀 GitHub Actions Workflows:"
+echo "1. Main Build APK: https://github.com/d11202773/auto-click-tool/actions/workflows/build-apk.yml"
+echo "2. Debug Build: https://github.com/d11202773/auto-click-tool/actions/workflows/debug-build.yml"
 echo ""
-echo "3️⃣ TỰ ĐỘNG BUILD APK:"
-echo "   - GitHub Actions sẽ tự động chạy"
+
+echo "📥 To get APK (if build successful):"
+echo "1. Go to: https://github.com/d11202773/auto-click-tool/actions"
+echo "2. Click on latest successful ✅ workflow run"
+echo "3. Scroll down to 'Artifacts' section"
+echo "4. Download 'app-release' or 'auto-click-tool-latest'"
+echo "5. Extract ZIP file to get APK"
+echo ""
+
+echo "🔄 Manual Trigger Options:"
+echo "• Main Build: git push origin main (automatic)"
+echo "• Debug Build: Manual trigger at GitHub Actions"
+echo ""
+
+echo "⚡ Quick Links:"
+echo "🌟 All Actions: https://github.com/d11202773/auto-click-tool/actions"
+echo "📦 Releases: https://github.com/d11202773/auto-click-tool/releases"
+echo ""
+
+echo "💡 Tip: If you see ✅ next to a workflow run, APK is ready!"
+echo "💡 If you see ❌, click to view error details"
+echo ""
+
+# Check if we can open browser
+if command -v open &> /dev/null; then
+    echo "🌐 Opening GitHub Actions in browser..."
+    open "https://github.com/d11202773/auto-click-tool/actions"
+elif command -v xdg-open &> /dev/null; then
+    echo "🌐 Opening GitHub Actions in browser..."
+    xdg-open "https://github.com/d11202773/auto-click-tool/actions"
+else
+    echo "📋 Copy this link to browser: https://github.com/d11202773/auto-click-tool/actions"
+fi
 echo "   - Chờ 3-5 phút để build hoàn thành"
 echo "   - APK sẽ sẵn sàng tải về"
 echo ""
