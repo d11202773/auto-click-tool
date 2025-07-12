@@ -2,17 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Quyền cần thiết cho auto click -->
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-    <uses-permission android:name="android.permission.ACCESSIBILITY_SERVICE"
-        tools:ignore="ProtectedPermissions" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-
     <application
-        android:name=".AutoClickApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -23,7 +13,6 @@
         android:theme="@style/Theme.AutoClickTool"
         tools:targetApi="31">
 
-        <!-- Main Activity -->
         <activity
             android:name=".presentation.MainActivity"
             android:exported="true"
@@ -33,36 +22,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <!-- Accessibility Service -->
-        <service
-            android:name=".service.AutoClickAccessibilityService"
-            android:exported="false"
-            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
-            <intent-filter>
-                <action android:name="android.accessibilityservice.AccessibilityService" />
-            </intent-filter>
-            <meta-data
-                android:name="android.accessibilityservice"
-                android:resource="@xml/accessibility_service_config" />
-        </service>
-
-        <!-- Overlay Service -->
-        <service
-            android:name=".service.OverlayService"
-            android:exported="false"
-            android:foregroundServiceType="specialUse" />
-
-        <!-- Work Manager Worker -->
-        <provider
-            android:name="androidx.startup.InitializationProvider"
-            android:authorities="${applicationId}.androidx-startup"
-            android:exported="false"
-            tools:node="merge">
-            <meta-data
-                android:name="androidx.work.WorkManagerInitializer"
-                android:value="androidx.startup" />
-        </provider>
 
     </application>
 
