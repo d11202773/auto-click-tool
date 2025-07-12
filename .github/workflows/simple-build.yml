@@ -23,12 +23,16 @@ jobs:
       uses: android-actions/setup-android@v3
 
     - name: Grant permission to gradlew
-      run: cd auto-click-tool && chmod +x ./gradlew
+      run: chmod +x ./gradlew
 
     - name: Build APK
-      run: cd auto-click-tool && ./gradlew :app:assembleDebug --stacktrace --info
+      run: ./gradlew :app:assembleDebug --stacktrace --info
 
     - name: Upload APK artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: auto-click-tool-apk
+        path: app/build/outputs/apk/debug/*.apk
       uses: actions/upload-artifact@v4
       with:
         name: auto-click-tool-apk
