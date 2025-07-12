@@ -23,9 +23,6 @@ jobs:
     - name: Make gradlew executable
       run: chmod +x ./gradlew
     
-    - name: Check Gradle
-      run: ./gradlew --version
-    
     - name: Clean
       run: ./gradlew clean
     
